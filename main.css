@@ -1,0 +1,43 @@
+/* colors
+    yellow/orange #FFA237
+    red #EB3D00
+    blue/grey #204260
+    dark blue #181D3A */
+
+
+* { box-sizing : border-box; }
+
+body {
+    text-align: center;
+    font-family: 'Concert One', cursive;
+    background: #FFA237;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+.game-board {
+    height: 300px;
+    /* background: grey; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 300px;
+}
+
+span {
+    font-size: 60px;
+}
