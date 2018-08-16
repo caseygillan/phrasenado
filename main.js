@@ -62,6 +62,17 @@ const nextRound = document.querySelector('.next-round');
 
 console.log(gamePhrase);
 
+const startButton = document.querySelector('.start-game');
+
+const welcomePage = document.querySelector('.welcome-page');
+const gamePage = document.querySelector('.game-page');
+const finalScreen = document.querySelector('.final-screen');
+
+startButton.addEventListener('click', function() {
+    welcomePage.style.display = "none";
+    gamePage.style.display = "block";
+});
+
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
         roundScore.innerHTML -= 50;
