@@ -82,16 +82,20 @@ function changeLetters() {
 
 createSpans();
 
-setInterval(changeLetters, 600);
+const letterInterval = setInterval(changeLetters, 600);
 
-setInterval(scoreCountdown, 1000);
+const countdownInterval = setInterval(scoreCountdown, 1000);
 
 const input = document.querySelector('.input');
 
+
+// Press enter when you think you know the
+// answer to make input box appear???
 document.body.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13) {
         if (input.value.toUpperCase() === gamePhrase) {
-            alert('Great Job!');
+            clearInterval(countdownInterval);
+            setInterval(changeLetters, 1);
         }
     }
 });
