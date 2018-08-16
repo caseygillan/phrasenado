@@ -55,8 +55,6 @@ const phrase = document.querySelector('.phrase');
 
 const gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
 
-console.log(gamePhrase);
-
 function createSpans () {
     for (let i = 0; i < gamePhrase.length; i++) {
         newSpan = document.createElement('span');
@@ -68,9 +66,21 @@ function createSpans () {
 
 function changeLetters () {
     let letter = document.querySelector(`.L${Math.floor(Math.random() * gamePhrase.length)}`);
+    if (!letter.classList.contains('letter'));
     letter.classList.add('letter');
 }
 
 createSpans();
 
-changeLetters();
+setInterval(changeLetters, 500);
+
+const input = document.querySelector('.input');
+
+document.body.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === 13) {
+    if (input.value.toUpperCase === gamePhrase){
+        alert('Great Job!');
+    }
+}
+});
+
