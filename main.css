@@ -26,12 +26,40 @@ h3 {
     font-size: 30px;
 }
 
-.game-board {
+.start-game {
+    font-size: 40px;
+    background-color: #EB3D00;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Concert One', cursive;
+    margin-top: 26px;
+}
+
+.welcome-screen {
     height: 300px;
-    /* background: grey; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    display: none;
+}
+
+.game-board {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.final-screen {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
 input {
@@ -41,3 +69,6 @@ input {
 span {
     font-size: 60px;
 }
+
+
+
