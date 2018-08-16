@@ -56,13 +56,18 @@ const gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
 
 const roundScore = document.querySelector('.round-score');
 
+const totalScore = document.querySelector('.total-score');
+
 console.log(gamePhrase);
 
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
-        console.log(roundScore.innerHTML);
         roundScore.innerHTML -= 50;
     }
+};
+
+function increaseTotalScore () {
+    totalScore.innerHTML -= -roundScore.innerHTML;
 };
 
 function createSpans() {
@@ -88,7 +93,6 @@ const countdownInterval = setInterval(scoreCountdown, 1000);
 
 const input = document.querySelector('.input');
 
-
 // Press enter when you think you know the
 // answer to make input box appear???
 document.body.addEventListener('keydown', function (evt) {
@@ -96,6 +100,7 @@ document.body.addEventListener('keydown', function (evt) {
         if (input.value.toUpperCase() === gamePhrase) {
             clearInterval(countdownInterval);
             setInterval(changeLetters, 1);
+            increaseTotalScore();
         }
     }
 });
