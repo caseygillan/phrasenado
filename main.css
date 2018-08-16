@@ -69,13 +69,16 @@ h3 {
     margin-top: 26px;
 }
 
+.final-page {
+    display: none;
+}
+
 .final-screen {
     height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    display: none;
 }
 
 input {
