@@ -14,26 +14,32 @@
     <header>
         <h1>Phrase Craze</h1>
         <h2>
-            <div>Player Total Score</div>
-            <div>Round Score</div>
+            <div>
+                <div>Player Total Score</div>
+                <div class="total-score">0</div>
+            </div>
+            <div>
+                <div>Round Score:</div>
+                <div class="round-score">1000</div>
+            </div>
         </h2>
     </header>
     <div class="welcome-screen">
         <h1>Welcome to Phrase Craze!</h1>
-        <p>Guess the phrase before time runs out to score the most points!</p>
+        <h2>Guess the phrase before time runs out to score the most points!</h2>
         <button class="start-game">Start New Game</button>
     </div>
     <div class="game-board">
-        <span>THE POT CALLING THE KETTLE BLACK</span>
+        <div class="phrase"></div>
         <div class="answer">
             <h3>Enter Your Answer Here</h3>
-            <input type="text">
+            <input type="text" class="input">
         </div>
     </div>
     <div class="final-screen">
         <h1>Congratulations!</h1>
         <div class="final-score">
-            <p>You Scored XXXX Points</p>
+            <h2>You Scored XXXX Points</h2>
         </div>
     </div>
     <script src="main.js"></script>
