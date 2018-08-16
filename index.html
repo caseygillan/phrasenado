@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +9,34 @@
     <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
+
 <body>
     <header>
-        <h1>The Phrase Game</h1>
+        <h1>Phrase Craze</h1>
         <h2>
             <div>Player Total Score</div>
             <div>Round Score</div>
         </h2>
     </header>
+    <div class="welcome-screen">
+        <h1>Welcome to Phrase Craze!</h1>
+        <p>Guess the phrase before time runs out to score the most points!</p>
+        <button class="start-game">Start New Game</button>
+    </div>
     <div class="game-board">
         <span>THE POT CALLING THE KETTLE BLACK</span>
+        <div class="answer">
+            <h3>Enter Your Answer Here</h3>
+            <input type="text">
+        </div>
     </div>
-    <div class="answer">
-        <h3>Enter Your Answer Here</h3>
-        <input type="text">
+    <div class="final-screen">
+        <h1>Congratulations!</h1>
+        <div class="final-score">
+            <p>You Scored XXXX Points</p>
+        </div>
     </div>
     <script src="main.js"></script>
 </body>
+
 </html>
