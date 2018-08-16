@@ -58,6 +58,8 @@ const roundScore = document.querySelector('.round-score');
 
 const totalScore = document.querySelector('.total-score');
 
+const nextRound = document.querySelector('.next-round');
+
 console.log(gamePhrase);
 
 function scoreCountdown() {
@@ -101,6 +103,7 @@ document.body.addEventListener('keydown', function (evt) {
             clearInterval(countdownInterval);
             setInterval(changeLetters, 1);
             increaseTotalScore();
+            nextRound.style.opacity = 1;
         }
     }
 });

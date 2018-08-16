@@ -53,6 +53,16 @@ h3 {
     /* display: none; */
 }
 
+.next-round {
+    opacity: 0;
+    font-size: 40px;
+    background-color: #EB3D00;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Concert One', cursive;
+    margin-top: 26px;
+}
+
 .final-screen {
     height: 300px;
     display: flex;
@@ -72,7 +82,7 @@ span {
 }
 
 .letter {
-    animation: fade 5s linear;
+    animation: fade 3s linear;
     animation-fill-mode: forwards;
 }
 
