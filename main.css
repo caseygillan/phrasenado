@@ -97,7 +97,6 @@ span {
 
 .letter {
     animation: rotate 2s linear infinite;
-    animation-fill-mode: forwards;
 }
 
 @keyframes rotate {
