@@ -87,6 +87,15 @@ h2 {
     margin-top: 26px;
 }
 
+.play-again {
+    font-size: 40px;
+    background-color: #EB3D00;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Concert One', cursive;
+    margin-top: 26px;
+}
+
 .final-page {
     display: none;
 }
