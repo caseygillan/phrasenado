@@ -109,7 +109,6 @@ nextButton.addEventListener('click', function () {
 });
 
 roundOver.addEventListener('click', function () {
-    console.log(roundCount);
     if (roundCount < 3) {
         while (phrase.hasChildNodes()) {
             phrase.removeChild(phrase.firstChild);
@@ -120,11 +119,13 @@ roundOver.addEventListener('click', function () {
         roundCount += 1;
         createSpans();
         gameOn();
-    } else {
-        gamePage.style.display = "none";
-        finalPage.style.display = "block";
-        finalScore.innerHTML = totalScore.innerHTML;
-    }
+}
+});
+
+gameOver.addEventListener('click', function () {
+    gamePage.style.display = "none";
+    finalPage.style.display = "block";
+    finalScore.innerHTML = totalScore.innerHTML;
 });
 
 function createSpans() {
