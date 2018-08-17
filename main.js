@@ -62,7 +62,9 @@ const totalScore = document.querySelector('.total-score');
 
 const finalScore = document.querySelector('.final-score');
 
-const nextRound = document.querySelector('.next-round');
+// const nextRound = document.querySelector('.next-round');
+
+const roundOver = document.querySelector('.round-over');
 
 const startButton = document.querySelector('.start-game');
 const nextButton = document.querySelector('.next-round');
@@ -76,13 +78,15 @@ let roundCount = 0;
 startButton.addEventListener('click', function () {
     welcomePage.style.display = "none";
     gamePage.style.display = "block";
-    nextRound.style.display = 'none';
+    nextButton.style.display = 'none';
+    roundOver.style.display = 'none';
     roundCount += 1;
     createSpans();
     gameOn();
 });
 
 nextButton.addEventListener('click', function () {
+    console.log(roundCount);
     //while function from W3 Schools to
     //remove existing letter spans before creating new spans
     //https://www.w3schools.com/jsref/met_node_removechild.asp
@@ -90,8 +94,28 @@ nextButton.addEventListener('click', function () {
         while (phrase.hasChildNodes()) {
             phrase.removeChild(phrase.firstChild);
         }
-        nextRound.style.display = 'none';
-        roundScore.innerHTML = 1000;
+        nextButton.style.display = 'none';
+        roundOver.style.display = 'none';
+        roundScore.innerHTML = 100;
+        roundCount += 1;
+        createSpans();
+        gameOn();
+    } else {
+        gamePage.style.display = "none";
+        finalPage.style.display = "block";
+        finalScore.innerHTML = totalScore.innerHTML;
+    }
+});
+
+roundOver.addEventListener('click', function () {
+    console.log(roundCount);
+    if (roundCount < 3) {
+        while (phrase.hasChildNodes()) {
+            phrase.removeChild(phrase.firstChild);
+        }
+        nextButton.style.display = 'none';
+        roundOver.style.display = 'none';
+        roundScore.innerHTML = 100;
         roundCount += 1;
         createSpans();
         gameOn();
@@ -121,7 +145,13 @@ function changeLetters() {
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
         roundScore.innerHTML -= 1;
-    } 
+    } else {
+        clearInterval(countdownInterval);
+            clearInterval(letterInterval);
+            input.value = '';
+            increaseTotalScore();
+            roundOver.style.display = '';
+    }
 };
 
 function increaseTotalScore() {
@@ -130,7 +160,7 @@ function increaseTotalScore() {
 
 function gameOn() {
     letterInterval = setInterval(changeLetters, 100);
-    countdownInterval = setInterval(scoreCountdown, 50);
+    countdownInterval = setInterval(scoreCountdown, 100);
         }
   
 input.addEventListener('keydown', function (evt) {
@@ -140,7 +170,7 @@ input.addEventListener('keydown', function (evt) {
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
-            nextRound.style.display = '';
+            nextButton.style.display = '';
         }
     }
 });
