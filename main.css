@@ -108,6 +108,10 @@ h2 {
     align-items: center;
 }
 
+.answer {
+    display: block;
+}
+
 input {
     width: 300px;
 }
