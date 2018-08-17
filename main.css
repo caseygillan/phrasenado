@@ -17,11 +17,6 @@ h1 {
     font-size: 40px;
 }
 
-h2 {
-    display: flex;
-    justify-content: space-between;
-}
-
 h3 {
     font-size: 30px;
 }
@@ -59,8 +54,13 @@ h3 {
     align-items: center;
 }
 
+h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .next-round {
-    opacity: 0;
     font-size: 40px;
     background-color: #EB3D00;
     border: none;
@@ -93,15 +93,14 @@ span {
     display: block;
     font-size: 60px;
     transform: rotate(-180deg);
-    direction: rtl;
 }
 
 .letter {
-    animation: fade 2s linear infinite;
+    animation: rotate 2s linear infinite;
     animation-fill-mode: forwards;
 }
 
-@keyframes fade {
+@keyframes rotate {
     0% {
         transform: rotate(0deg);
     }
