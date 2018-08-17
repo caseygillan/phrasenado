@@ -62,12 +62,11 @@ const totalScore = document.querySelector('.total-score');
 
 const finalScore = document.querySelector('.final-score');
 
-const roundOver = document.querySelector('.round-over');
-
-const gameOver = document.querySelector('.game-over');
-
 const startButton = document.querySelector('.start-game');
 const nextButton = document.querySelector('.next-round');
+const roundOver = document.querySelector('.round-over');
+const gameOver = document.querySelector('.game-over');
+const playAgain = document.querySelector('.play-again');
 
 const welcomePage = document.querySelector('.welcome-page');
 const gamePage = document.querySelector('.game-page');
@@ -76,8 +75,8 @@ const finalPage = document.querySelector('.final-page');
 let roundCount = 0;
 
 startButton.addEventListener('click', function () {
-    welcomePage.style.display = "none";
-    gamePage.style.display = "block";
+    welcomePage.style.display = 'none';
+    gamePage.style.display = 'block';
     nextButton.style.display = 'none';
     roundOver.style.display = 'none';
     gameOver.style.display = 'none';
@@ -101,10 +100,6 @@ nextButton.addEventListener('click', function () {
         roundCount += 1;
         createSpans();
         gameOn();
-    } else {
-        gamePage.style.display = "none";
-        finalPage.style.display = "block";
-        finalScore.innerHTML = totalScore.innerHTML;
     }
 });
 
@@ -119,13 +114,17 @@ roundOver.addEventListener('click', function () {
         roundCount += 1;
         createSpans();
         gameOn();
-}
+    }
 });
 
 gameOver.addEventListener('click', function () {
-    gamePage.style.display = "none";
-    finalPage.style.display = "block";
+    gamePage.style.display = 'none';
+    finalPage.style.display = 'block';
     finalScore.innerHTML = totalScore.innerHTML;
+});
+
+playAgain.addEventListener('click', function () {
+    window.location.reload();
 });
 
 function createSpans() {
@@ -149,16 +148,16 @@ function scoreCountdown() {
         roundScore.innerHTML -= 1;
     } else if (roundCount < 3) {
         clearInterval(countdownInterval);
-            clearInterval(letterInterval);
-            input.value = '';
-            increaseTotalScore();
-            roundOver.style.display = '';
+        clearInterval(letterInterval);
+        input.value = '';
+        increaseTotalScore();
+        roundOver.style.display = '';
     } else {
         clearInterval(countdownInterval);
-            clearInterval(letterInterval);
-            input.value = '';
-            increaseTotalScore();
-            gameOver.style.display = '';
+        clearInterval(letterInterval);
+        input.value = '';
+        increaseTotalScore();
+        gameOver.style.display = '';
     }
 };
 
@@ -169,12 +168,12 @@ function increaseTotalScore() {
 function gameOn() {
     letterInterval = setInterval(changeLetters, 100);
     countdownInterval = setInterval(scoreCountdown, 100);
-        }
-  
+}
+
 input.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13 && input.value.toUpperCase() === gamePhrase) {
-        if (roundCount < 3) {    
-        clearInterval(countdownInterval);
+        if (roundCount < 3) {
+            clearInterval(countdownInterval);
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
