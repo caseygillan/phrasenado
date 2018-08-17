@@ -54,6 +54,8 @@ const phrase = document.querySelector('.phrase');
 
 let gamePhrase = '';
 
+const input = document.querySelector('.input');
+
 const roundScore = document.querySelector('.round-score');
 
 const totalScore = document.querySelector('.total-score');
@@ -61,8 +63,6 @@ const totalScore = document.querySelector('.total-score');
 const finalScore = document.querySelector('.final-score');
 
 const nextRound = document.querySelector('.next-round');
-
-console.log(gamePhrase);
 
 const startButton = document.querySelector('.start-game');
 const nextButton = document.querySelector('.next-round');
@@ -121,7 +121,7 @@ function changeLetters() {
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
         roundScore.innerHTML -= 1;
-    }
+    } 
 };
 
 function increaseTotalScore() {
@@ -131,16 +131,16 @@ function increaseTotalScore() {
 function gameOn() {
     letterInterval = setInterval(changeLetters, 100);
     countdownInterval = setInterval(scoreCountdown, 50);
-    const input = document.querySelector('.input');
-    input.addEventListener('keydown', function (evt) {
-        if (evt.keyCode === 13) {
-            if (input.value.toUpperCase() === gamePhrase) {
-                clearInterval(countdownInterval);
-                clearInterval(letterInterval);
-                input.value = '';
-                increaseTotalScore();
-                nextRound.style.display = '';
-            }
         }
-    });
-};
+  
+input.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === 13) {
+        if (input.value.toUpperCase() === gamePhrase) {
+            clearInterval(countdownInterval);
+            clearInterval(letterInterval);
+            input.value = '';
+            increaseTotalScore();
+            nextRound.style.display = '';
+        }
+    }
+});
