@@ -69,10 +69,13 @@ const welcomePage = document.querySelector('.welcome-page');
 const gamePage = document.querySelector('.game-page');
 const finalPage = document.querySelector('.final-page');
 
+let roundCount = 0;
+
 startButton.addEventListener('click', function () {
     welcomePage.style.display = "none";
     gamePage.style.display = "block";
     nextRound.style.display = 'none';
+    roundCount += 1;
     createSpans();
     gameOn();
 });
@@ -81,13 +84,19 @@ nextButton.addEventListener('click', function () {
     //while function from W3 Schools to
     //remove existing letter spans before creating new spans
     //https://www.w3schools.com/jsref/met_node_removechild.asp
+    if (roundCount < 3) {
     while (phrase.hasChildNodes()) {
         phrase.removeChild(phrase.firstChild);
     }
     nextRound.style.display = 'none';
     roundScore.innerHTML = 1000;
+    roundCount += 1;
     createSpans();
     gameOn();
+} else {
+    gamePage.style.display = "none";
+    finalPage.style.display = "block";
+}
 });
 
 function createSpans() {
