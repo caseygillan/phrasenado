@@ -62,6 +62,8 @@ const totalScore = document.querySelector('.total-score');
 
 const finalScore = document.querySelector('.final-score');
 
+const answer = document.querySelector('.answer');
+
 const startButton = document.querySelector('.start-game');
 const nextButton = document.querySelector('.next-round');
 const roundOver = document.querySelector('.round-over');
@@ -98,6 +100,7 @@ nextButton.addEventListener('click', function () {
         roundOver.style.display = 'none';
         roundScore.innerHTML = 100;
         roundCount += 1;
+        answer.style.display = 'block';
         createSpans();
         gameOn();
     }
@@ -112,6 +115,7 @@ roundOver.addEventListener('click', function () {
         roundOver.style.display = 'none';
         roundScore.innerHTML = 100;
         roundCount += 1;
+        answer.style.display = 'block';
         createSpans();
         gameOn();
     }
@@ -153,12 +157,14 @@ function scoreCountdown() {
         input.value = '';
         increaseTotalScore();
         roundOver.style.display = '';
+        answer.style.display = 'none';
     } else {
         clearInterval(countdownInterval);
         clearInterval(letterInterval);
         input.value = '';
         increaseTotalScore();
         gameOver.style.display = '';
+        answer.style.display = 'none';
     }
 };
 
@@ -179,13 +185,14 @@ input.addEventListener('keydown', function (evt) {
             input.value = '';
             increaseTotalScore();
             nextButton.style.display = '';
-
+            answer.style.display = 'none';
         } else {
             clearInterval(countdownInterval);
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
             gameOver.style.display = '';
+            answer.style.display = 'none';
         }
     }
 });
