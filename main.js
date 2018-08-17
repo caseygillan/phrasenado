@@ -77,27 +77,17 @@ startButton.addEventListener('click', function () {
 });
 
 nextButton.addEventListener('click', function () {
-    //grabbed this while function from W3 Schools to
+    //while function from W3 Schools to
     //remove existing letter spans before creating new spans
     //https://www.w3schools.com/jsref/met_node_removechild.asp
     while (phrase.hasChildNodes()) {
         phrase.removeChild(phrase.firstChild);
     }
-    nextRound.style.opacity = 0;
+    nextRound.style.display = 'none';
     roundScore.innerHTML = 1000;
     createSpans();
     gameOn();
 });
-
-function scoreCountdown() {
-    if (roundScore.innerHTML > 0) {
-        roundScore.innerHTML -= 50;
-    }
-};
-
-function increaseTotalScore() {
-    totalScore.innerHTML -= -roundScore.innerHTML;
-};
 
 function createSpans() {
     gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
@@ -115,9 +105,19 @@ function changeLetters() {
     letter.classList.add('letter');
 };
 
+function scoreCountdown() {
+    if (roundScore.innerHTML > 0) {
+        roundScore.innerHTML -= 1;
+    }
+};
+
+function increaseTotalScore() {
+    totalScore.innerHTML -= -roundScore.innerHTML;
+};
+
 function gameOn() {
-    const letterInterval = setInterval(changeLetters, 100);
-    const countdownInterval = setInterval(scoreCountdown, 1000);
+    letterInterval = setInterval(changeLetters, 100);
+    countdownInterval = setInterval(scoreCountdown, 50);
     const input = document.querySelector('.input');
     input.addEventListener('keydown', function (evt) {
         if (evt.keyCode === 13) {
@@ -126,7 +126,7 @@ function gameOn() {
                 clearInterval(letterInterval);
                 input.value = '';
                 increaseTotalScore();
-                nextRound.style.opacity = 1;
+                nextRound.style.display = 'block';
             }
         }
     });
