@@ -62,9 +62,9 @@ const totalScore = document.querySelector('.total-score');
 
 const finalScore = document.querySelector('.final-score');
 
-// const nextRound = document.querySelector('.next-round');
-
 const roundOver = document.querySelector('.round-over');
+
+const gameOver = document.querySelector('.game-over');
 
 const startButton = document.querySelector('.start-game');
 const nextButton = document.querySelector('.next-round');
@@ -80,6 +80,7 @@ startButton.addEventListener('click', function () {
     gamePage.style.display = "block";
     nextButton.style.display = 'none';
     roundOver.style.display = 'none';
+    gameOver.style.display = 'none';
     roundCount += 1;
     createSpans();
     gameOn();
@@ -145,12 +146,18 @@ function changeLetters() {
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
         roundScore.innerHTML -= 1;
-    } else {
+    } else if (roundCount < 3) {
         clearInterval(countdownInterval);
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
             roundOver.style.display = '';
+    } else {
+        clearInterval(countdownInterval);
+            clearInterval(letterInterval);
+            input.value = '';
+            increaseTotalScore();
+            gameOver.style.display = '';
     }
 };
 
@@ -164,13 +171,19 @@ function gameOn() {
         }
   
 input.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 13) {
-        if (input.value.toUpperCase() === gamePhrase) {
-            clearInterval(countdownInterval);
+    if (evt.keyCode === 13 && input.value.toUpperCase() === gamePhrase) {
+        if (roundCount < 3) {    
+        clearInterval(countdownInterval);
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
             nextButton.style.display = '';
+        } else {
+            clearInterval(countdownInterval);
+            clearInterval(letterInterval);
+            input.value = '';
+            increaseTotalScore();
+            gameOver.style.display = '';
         }
     }
 });
