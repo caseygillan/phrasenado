@@ -72,6 +72,7 @@ const finalPage = document.querySelector('.final-page');
 startButton.addEventListener('click', function () {
     welcomePage.style.display = "none";
     gamePage.style.display = "block";
+    nextRound.style.display = 'none';
     createSpans();
     gameOn();
 });
@@ -126,7 +127,7 @@ function gameOn() {
                 clearInterval(letterInterval);
                 input.value = '';
                 increaseTotalScore();
-                nextRound.style.display = 'block';
+                nextRound.style.display = '';
             }
         }
     });
