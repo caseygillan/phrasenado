@@ -52,7 +52,7 @@ const phraseArray = ["A CHIP ON YOUR SHOULDER",
 
 const phrase = document.querySelector('.phrase');
 
-const gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
+let gamePhrase = '';
 
 const roundScore = document.querySelector('.round-score');
 
@@ -63,14 +63,30 @@ const nextRound = document.querySelector('.next-round');
 console.log(gamePhrase);
 
 const startButton = document.querySelector('.start-game');
+const nextButton = document.querySelector('.next-round');
 
 const welcomePage = document.querySelector('.welcome-page');
 const gamePage = document.querySelector('.game-page');
-const finalScreen = document.querySelector('.final-screen');
+const finalPage = document.querySelector('.final-page');
 
-startButton.addEventListener('click', function() {
+startButton.addEventListener('click', function () {
     welcomePage.style.display = "none";
     gamePage.style.display = "block";
+    createSpans();
+    gameOn();
+});
+
+nextButton.addEventListener('click', function () {
+    //grabbed this while function from W3 Schools to
+    //remove existing letter spans before creating new spans
+    //https://www.w3schools.com/jsref/met_node_removechild.asp
+    while (phrase.hasChildNodes()) {
+        phrase.removeChild(phrase.firstChild);
+    }
+    nextRound.style.opacity = 0;
+    roundScore.innerHTML = 1000;
+    createSpans();
+    gameOn();
 });
 
 function scoreCountdown() {
@@ -79,43 +95,39 @@ function scoreCountdown() {
     }
 };
 
-function increaseTotalScore () {
+function increaseTotalScore() {
     totalScore.innerHTML -= -roundScore.innerHTML;
 };
 
 function createSpans() {
+    gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
     for (let i = 0; i < gamePhrase.length; i++) {
         newSpan = document.createElement('span');
         phrase.appendChild(newSpan);
         newSpan.innerText = gamePhrase[i];
         newSpan.classList.add(`L${i}`);
     }
-}
+};
 
 function changeLetters() {
     let letter = document.querySelector(`.L${Math.floor(Math.random() * gamePhrase.length)}`);
     if (!letter.classList.contains('letter'));
     letter.classList.add('letter');
-}
+};
 
-createSpans();
-
-const letterInterval = setInterval(changeLetters, 600);
-
-const countdownInterval = setInterval(scoreCountdown, 1000);
-
-const input = document.querySelector('.input');
-
-// Press enter when you think you know the
-// answer to make input box appear???
-document.body.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 13) {
-        if (input.value.toUpperCase() === gamePhrase) {
-            clearInterval(countdownInterval);
-            setInterval(changeLetters, 1);
-            increaseTotalScore();
-            nextRound.style.opacity = 1;
+function gameOn() {
+    const letterInterval = setInterval(changeLetters, 100);
+    const countdownInterval = setInterval(scoreCountdown, 1000);
+    const input = document.querySelector('.input');
+    input.addEventListener('keydown', function (evt) {
+        if (evt.keyCode === 13) {
+            if (input.value.toUpperCase() === gamePhrase) {
+                clearInterval(countdownInterval);
+                clearInterval(letterInterval);
+                input.value = '';
+                increaseTotalScore();
+                nextRound.style.opacity = 1;
+            }
         }
-    }
-});
-
+    });
+};
