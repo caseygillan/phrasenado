@@ -58,6 +58,8 @@ const roundScore = document.querySelector('.round-score');
 
 const totalScore = document.querySelector('.total-score');
 
+const finalScore = document.querySelector('.final-score');
+
 const nextRound = document.querySelector('.next-round');
 
 console.log(gamePhrase);
@@ -85,18 +87,19 @@ nextButton.addEventListener('click', function () {
     //remove existing letter spans before creating new spans
     //https://www.w3schools.com/jsref/met_node_removechild.asp
     if (roundCount < 3) {
-    while (phrase.hasChildNodes()) {
-        phrase.removeChild(phrase.firstChild);
+        while (phrase.hasChildNodes()) {
+            phrase.removeChild(phrase.firstChild);
+        }
+        nextRound.style.display = 'none';
+        roundScore.innerHTML = 1000;
+        roundCount += 1;
+        createSpans();
+        gameOn();
+    } else {
+        gamePage.style.display = "none";
+        finalPage.style.display = "block";
+        finalScore.innerHTML = totalScore.innerHTML;
     }
-    nextRound.style.display = 'none';
-    roundScore.innerHTML = 1000;
-    roundCount += 1;
-    createSpans();
-    gameOn();
-} else {
-    gamePage.style.display = "none";
-    finalPage.style.display = "block";
-}
 });
 
 function createSpans() {
