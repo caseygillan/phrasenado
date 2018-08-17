@@ -128,7 +128,8 @@ playAgain.addEventListener('click', function () {
 });
 
 function createSpans() {
-    gamePhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)];
+    initialPhrase = phraseArray.splice([Math.floor(Math.random() * phraseArray.length)], 1);
+    gamePhrase = initialPhrase[0];
     for (let i = 0; i < gamePhrase.length; i++) {
         newSpan = document.createElement('span');
         phrase.appendChild(newSpan);
@@ -178,6 +179,7 @@ input.addEventListener('keydown', function (evt) {
             input.value = '';
             increaseTotalScore();
             nextButton.style.display = '';
+
         } else {
             clearInterval(countdownInterval);
             clearInterval(letterInterval);
