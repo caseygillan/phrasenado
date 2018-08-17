@@ -69,6 +69,24 @@ h2 {
     margin-top: 26px;
 }
 
+.round-over {
+    font-size: 40px;
+    background-color: #EB3D00;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Concert One', cursive;
+    margin-top: 26px;
+}
+
+.game-over {
+    font-size: 40px;
+    background-color: #EB3D00;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Concert One', cursive;
+    margin-top: 26px;
+}
+
 .final-page {
     display: none;
 }
