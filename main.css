@@ -85,28 +85,28 @@ input {
     width: 300px;
 }
 
+.phrase {
+    display: flex;
+}
+
 span {
+    display: block;
     font-size: 60px;
-    opacity: 0;
+    transform: rotate(-180deg);
+    direction: rtl;
 }
 
 .letter {
-    animation: fade 3s linear;
+    animation: fade 2s linear infinite;
     animation-fill-mode: forwards;
 }
 
 @keyframes fade {
     0% {
-        opacity: 0;
-    }
-    25% {
-        opacity: .25;
-    }
-    75% {
-        opacity: .75;
+        transform: rotate(0deg);
     }
     100% {
-        opacity: 1;
+        transform: rotate(360deg);
     }
 }
 
