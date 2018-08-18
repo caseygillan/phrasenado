@@ -156,6 +156,7 @@ function scoreCountdown() {
         clearInterval(letterInterval);
         input.value = '';
         increaseTotalScore();
+        phrase.style.display = 'none';
         roundOver.style.display = '';
         answer.style.display = 'none';
     } else {
@@ -163,6 +164,7 @@ function scoreCountdown() {
         clearInterval(letterInterval);
         input.value = '';
         increaseTotalScore();
+        phrase.style.display = 'none';
         gameOver.style.display = '';
         answer.style.display = 'none';
     }
@@ -173,6 +175,7 @@ function increaseTotalScore() {
 };
 
 function gameOn() {
+    phrase.style.display = '';
     letterInterval = setInterval(changeLetters, 100);
     countdownInterval = setInterval(scoreCountdown, 100);
 }
@@ -184,6 +187,7 @@ input.addEventListener('keydown', function (evt) {
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
+            phrase.style.display = 'none';
             nextButton.style.display = '';
             answer.style.display = 'none';
         } else {
@@ -191,6 +195,7 @@ input.addEventListener('keydown', function (evt) {
             clearInterval(letterInterval);
             input.value = '';
             increaseTotalScore();
+            phrase.style.display = 'none';
             gameOver.style.display = '';
             answer.style.display = 'none';
         }
