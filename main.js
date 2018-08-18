@@ -52,6 +52,8 @@ const phraseArray = ["A CHIP ON YOUR SHOULDER",
 
 const phrase = document.querySelector('.phrase');
 
+const solution = document.querySelector('.solution');
+
 let gamePhrase = '';
 
 const input = document.querySelector('.input');
@@ -101,6 +103,7 @@ nextButton.addEventListener('click', function () {
         roundScore.innerHTML = 100;
         roundCount += 1;
         answer.style.display = 'block';
+        solution.innerHTML = '';
         createSpans();
         gameOn();
     }
@@ -116,6 +119,7 @@ roundOver.addEventListener('click', function () {
         roundScore.innerHTML = 100;
         roundCount += 1;
         answer.style.display = 'block';
+        solution.innerHTML = '';
         createSpans();
         gameOn();
     }
@@ -157,6 +161,7 @@ function scoreCountdown() {
         input.value = '';
         increaseTotalScore();
         phrase.style.display = 'none';
+        solution.innerHTML = `${gamePhrase}`
         roundOver.style.display = '';
         answer.style.display = 'none';
     } else {
@@ -165,6 +170,7 @@ function scoreCountdown() {
         input.value = '';
         increaseTotalScore();
         phrase.style.display = 'none';
+        solution.innerHTML = `${gamePhrase}`
         gameOver.style.display = '';
         answer.style.display = 'none';
     }
@@ -188,6 +194,7 @@ input.addEventListener('keydown', function (evt) {
             input.value = '';
             increaseTotalScore();
             phrase.style.display = 'none';
+            solution.innerHTML = `${gamePhrase}`
             nextButton.style.display = '';
             answer.style.display = 'none';
         } else {
@@ -196,6 +203,7 @@ input.addEventListener('keydown', function (evt) {
             input.value = '';
             increaseTotalScore();
             phrase.style.display = 'none';
+            solution.innerHTML = `${gamePhrase}`
             gameOver.style.display = '';
             answer.style.display = 'none';
         }
