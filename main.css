@@ -120,6 +120,11 @@ input {
     display: flex;
 }
 
+.solution {
+    display: block;
+    font-size: 60px;
+}
+
 span {
     display: block;
     font-size: 60px;
