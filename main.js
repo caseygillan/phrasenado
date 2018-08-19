@@ -104,6 +104,8 @@ nextButton.addEventListener('click', function () {
         roundCount += 1;
         answer.style.display = 'block';
         solution.innerHTML = '';
+        //input.focus() method from Stack Overflow (https://stackoverflow.com/questions/17500704/javascript-set-focus-to-html-form-element)
+        input.focus();
         createSpans();
         gameOn();
     }
@@ -120,6 +122,7 @@ roundOver.addEventListener('click', function () {
         roundCount += 1;
         answer.style.display = 'block';
         solution.innerHTML = '';
+        input.focus();
         createSpans();
         gameOn();
     }
@@ -195,6 +198,7 @@ input.addEventListener('keydown', function (evt) {
             increaseTotalScore();
             phrase.style.display = 'none';
             solution.innerHTML = `${gamePhrase}`
+            input.focus();
             nextButton.style.display = '';
             answer.style.display = 'none';
         } else {
@@ -204,6 +208,7 @@ input.addEventListener('keydown', function (evt) {
             increaseTotalScore();
             phrase.style.display = 'none';
             solution.innerHTML = `${gamePhrase}`
+            input.focus();
             gameOver.style.display = '';
             answer.style.display = 'none';
         }
