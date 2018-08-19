@@ -51,23 +51,16 @@ const phraseArray = ["A CHIP ON YOUR SHOULDER",
     "WILD GOOSE CHASE"];
 
 const phrase = document.querySelector('.phrase');
-
 const solution = document.querySelector('.solution');
-
 let gamePhrase = '';
 
 const input = document.querySelector('.input');
 
 const roundScore = document.querySelector('.round-score');
-
 const roundScoreboard = document.querySelector('.round-scoreboard');
-
 const totalScore = document.querySelector('.total-score');
-
 const totalScoreboard = document.querySelector('.total-scoreboard');
-
 const finalScore = document.querySelector('.final-score');
-
 const answer = document.querySelector('.answer');
 
 const startButton = document.querySelector('.start-game');
@@ -109,16 +102,7 @@ nextButton.addEventListener('click', function () {
         while (phrase.hasChildNodes()) {
             phrase.removeChild(phrase.firstChild);
         }
-        nextButton.style.display = 'none';
-        roundOver.style.display = 'none';
-        roundScore.innerHTML = 100;
-        roundCount += 1;
-        answer.style.display = 'block';
-        solution.innerHTML = '';
-        //input.focus() method from Stack Overflow (https://stackoverflow.com/questions/17500704/javascript-set-focus-to-html-form-element)
-        input.focus();
-        createSpans();
-        gameOn();
+        nextRound();
     }
 });
 
@@ -127,15 +111,7 @@ roundOver.addEventListener('click', function () {
         while (phrase.hasChildNodes()) {
             phrase.removeChild(phrase.firstChild);
         }
-        nextButton.style.display = 'none';
-        roundOver.style.display = 'none';
-        roundScore.innerHTML = 100;
-        roundCount += 1;
-        answer.style.display = 'block';
-        solution.innerHTML = '';
-        input.focus();
-        createSpans();
-        gameOn();
+        nextRound();
     }
 });
 
@@ -169,31 +145,41 @@ function changeLetters() {
     timeClock.play();
 };
 
+function nextRound() {
+    nextButton.style.display = 'none';
+    roundOver.style.display = 'none';
+    roundScore.innerHTML = 1000;
+    roundCount += 1;
+    answer.style.display = 'block';
+    solution.innerHTML = '';
+    input.focus();
+    //input.focus() method from Stack Overflow (https://stackoverflow.com/questions/17500704/javascript-set-focus-to-html-form-element)
+    createSpans();
+    gameOn();
+};
+
+function endRound() {
+    clearInterval(countdownInterval);
+    clearInterval(letterInterval);
+    input.value = '';
+    increaseTotalScore();
+    phrase.style.display = 'none';
+    solution.innerHTML = `${gamePhrase}`
+    timeClock.pause();
+    answer.style.display = 'none';
+};
+
 function scoreCountdown() {
     if (roundScore.innerHTML > 0) {
         roundScore.innerHTML -= 1;
     } else if (roundCount < 3) {
-        clearInterval(countdownInterval);
-        clearInterval(letterInterval);
-        input.value = '';
-        increaseTotalScore();
-        phrase.style.display = 'none';
-        solution.innerHTML = `${gamePhrase}`
-        timeClock.pause();
+        endRound();
         buzzer.play();
         roundOver.style.display = '';
-        answer.style.display = 'none';
     } else {
-        clearInterval(countdownInterval);
-        clearInterval(letterInterval);
-        input.value = '';
-        increaseTotalScore();
-        phrase.style.display = 'none';
-        solution.innerHTML = `${gamePhrase}`
-        timeClock.pause();
+        endRound();
         buzzer.play();
         gameOver.style.display = '';
-        answer.style.display = 'none';
     }
 };
 
@@ -204,35 +190,19 @@ function increaseTotalScore() {
 function gameOn() {
     phrase.style.display = '';
     letterInterval = setInterval(changeLetters, 100);
-    countdownInterval = setInterval(scoreCountdown, 100);
+    countdownInterval = setInterval(scoreCountdown, 10);
 }
 
 input.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 13 && input.value.toUpperCase() === gamePhrase) {
         if (roundCount < 3) {
-            clearInterval(countdownInterval);
-            clearInterval(letterInterval);
-            input.value = '';
-            increaseTotalScore();
-            phrase.style.display = 'none';
-            solution.innerHTML = `${gamePhrase}`
-            timeClock.pause();
+            endRound();
             winner.play();
-            input.focus();
             nextButton.style.display = '';
-            answer.style.display = 'none';
         } else {
-            clearInterval(countdownInterval);
-            clearInterval(letterInterval);
-            input.value = '';
-            increaseTotalScore();
-            phrase.style.display = 'none';
-            solution.innerHTML = `${gamePhrase}`
-            timeClock.pause();
+            endRound();
             winner.play();
-            input.focus();
             gameOver.style.display = '';
-            answer.style.display = 'none';
         }
     }
 });
