@@ -28,6 +28,14 @@ h3 {
     font-size:40px;
 }
 
+.total-scoreboard {
+    display: none;
+}
+
+.round-scoreboard {
+    display: none;
+}
+
 .start-game {
     font-size: 40px;
     background-color: #EB3D00;
