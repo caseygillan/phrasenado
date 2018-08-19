@@ -80,6 +80,11 @@ const welcomePage = document.querySelector('.welcome-page');
 const gamePage = document.querySelector('.game-page');
 const finalPage = document.querySelector('.final-page');
 
+const introMusic = document.querySelector('.intro');
+const buzzer = document.querySelector('.buzzer');
+const winner = document.querySelector('.winner');
+const timeClock = document.querySelector('.timeclock');
+
 let roundCount = 0;
 
 startButton.addEventListener('click', function () {
@@ -161,6 +166,7 @@ function changeLetters() {
     let letter = document.querySelector(`.L${Math.floor(Math.random() * gamePhrase.length)}`);
     if (!letter.classList.contains('letter'));
     letter.classList.add('letter');
+    timeClock.play();
 };
 
 function scoreCountdown() {
@@ -173,6 +179,8 @@ function scoreCountdown() {
         increaseTotalScore();
         phrase.style.display = 'none';
         solution.innerHTML = `${gamePhrase}`
+        timeClock.pause();
+        buzzer.play();
         roundOver.style.display = '';
         answer.style.display = 'none';
     } else {
@@ -182,6 +190,8 @@ function scoreCountdown() {
         increaseTotalScore();
         phrase.style.display = 'none';
         solution.innerHTML = `${gamePhrase}`
+        timeClock.pause();
+        buzzer.play();
         gameOver.style.display = '';
         answer.style.display = 'none';
     }
@@ -206,6 +216,8 @@ input.addEventListener('keydown', function (evt) {
             increaseTotalScore();
             phrase.style.display = 'none';
             solution.innerHTML = `${gamePhrase}`
+            timeClock.pause();
+            winner.play();
             input.focus();
             nextButton.style.display = '';
             answer.style.display = 'none';
@@ -216,6 +228,8 @@ input.addEventListener('keydown', function (evt) {
             increaseTotalScore();
             phrase.style.display = 'none';
             solution.innerHTML = `${gamePhrase}`
+            timeClock.pause();
+            winner.play();
             input.focus();
             gameOver.style.display = '';
             answer.style.display = 'none';
