@@ -1,10 +1,3 @@
-/* colors
-    yellow/orange #FFA237
-    red #EB3D00
-    blue/grey #204260
-    dark blue #181D3A */
-
-
 * { box-sizing : border-box; }
 
 body {
@@ -34,15 +27,6 @@ h3 {
 
 .round-scoreboard {
     display: none;
-}
-
-.start-game {
-    font-size: 40px;
-    background-color: #EB3D00;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Concert One', cursive;
-    margin-top: 26px;
 }
 
 .welcome-page {
@@ -75,34 +59,7 @@ h2 {
     justify-content: space-evenly;
 }
 
-.next-round {
-    font-size: 40px;
-    background-color: #EB3D00;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Concert One', cursive;
-    margin-top: 26px;
-}
-
-.round-over {
-    font-size: 40px;
-    background-color: #EB3D00;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Concert One', cursive;
-    margin-top: 26px;
-}
-
-.game-over {
-    font-size: 40px;
-    background-color: #EB3D00;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Concert One', cursive;
-    margin-top: 26px;
-}
-
-.play-again {
+button {
     font-size: 40px;
     background-color: #EB3D00;
     border: none;
