@@ -60,7 +60,11 @@ const input = document.querySelector('.input');
 
 const roundScore = document.querySelector('.round-score');
 
+const roundScoreboard = document.querySelector('.round-scoreboard');
+
 const totalScore = document.querySelector('.total-score');
+
+const totalScoreboard = document.querySelector('.total-scoreboard');
 
 const finalScore = document.querySelector('.final-score');
 
@@ -84,6 +88,8 @@ startButton.addEventListener('click', function () {
     nextButton.style.display = 'none';
     roundOver.style.display = 'none';
     gameOver.style.display = 'none';
+    totalScoreboard.style.display = 'block';
+    roundScoreboard.style.display = 'block';
     roundCount += 1;
     createSpans();
     gameOn();
@@ -131,6 +137,8 @@ roundOver.addEventListener('click', function () {
 gameOver.addEventListener('click', function () {
     gamePage.style.display = 'none';
     finalPage.style.display = 'block';
+    totalScoreboard.style.display = 'none';
+    roundScoreboard.style.display = 'none';
     finalScore.innerHTML = totalScore.innerHTML;
 });
 
