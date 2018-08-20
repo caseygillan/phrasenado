@@ -95,9 +95,6 @@ startButton.addEventListener('click', function () {
 });
 
 nextButton.addEventListener('click', function () {
-    //while function from W3 Schools to
-    //remove existing letter spans before creating new spans
-    //https://www.w3schools.com/jsref/met_node_removechild.asp
     if (roundCount < 3) {
         while (phrase.hasChildNodes()) {
             phrase.removeChild(phrase.firstChild);
@@ -127,7 +124,7 @@ playAgain.addEventListener('click', function () {
     window.location.reload();
 });
 
-function tornado () {
+function tornado() {
     tornadoImg.style.left = `1100px`;
 }
 
@@ -157,7 +154,6 @@ function nextRound() {
     answer.style.display = 'block';
     solution.innerHTML = '';
     input.focus();
-    //input.focus() method from Stack Overflow (https://stackoverflow.com/questions/17500704/javascript-set-focus-to-html-form-element)
     createSpans();
     gameOn();
 };
