@@ -77,6 +77,7 @@ const introMusic = document.querySelector('.intro');
 const buzzer = document.querySelector('.buzzer');
 const winner = document.querySelector('.winner');
 const timeClock = document.querySelector('.timeclock');
+const tornadoImg = document.querySelector('.tornado');
 
 let roundCount = 0;
 
@@ -94,7 +95,6 @@ startButton.addEventListener('click', function () {
 });
 
 nextButton.addEventListener('click', function () {
-    console.log(roundCount);
     //while function from W3 Schools to
     //remove existing letter spans before creating new spans
     //https://www.w3schools.com/jsref/met_node_removechild.asp
@@ -126,6 +126,10 @@ gameOver.addEventListener('click', function () {
 playAgain.addEventListener('click', function () {
     window.location.reload();
 });
+
+function tornado () {
+    tornadoImg.style.left = `1100px`;
+}
 
 function createSpans() {
     initialPhrase = phraseArray.splice([Math.floor(Math.random() * phraseArray.length)], 1);
@@ -161,12 +165,14 @@ function nextRound() {
 function endRound() {
     clearInterval(countdownInterval);
     clearInterval(letterInterval);
+    clearInterval(tornadoInterval);
     input.value = '';
     increaseTotalScore();
     phrase.style.display = 'none';
     solution.innerHTML = `${gamePhrase}`
     timeClock.pause();
     answer.style.display = 'none';
+    tornadoImg.style.left = '280px';
 };
 
 function scoreCountdown() {
@@ -191,6 +197,7 @@ function gameOn() {
     phrase.style.display = '';
     letterInterval = setInterval(changeLetters, 100);
     countdownInterval = setInterval(scoreCountdown, 10);
+    tornadoInterval = setInterval(tornado, 1);
 }
 
 input.addEventListener('keydown', function (evt) {
