@@ -110,6 +110,15 @@ span {
     animation: rotate 2s linear infinite;
 }
 
+.tornado {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: 265px;
+    left: 280px;
+    transition: 4s;
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -119,5 +128,39 @@ span {
     }
 }
 
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
 
+    h3 {
+        font-size: 20px;
+    }
+
+    .header-two {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+    button {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 30px;
+    }
+
+    input {
+        width: 90%
+    }
+
+    .solution {
+        font-size: 30px;
+    }
+
+    .game-board {
+        height: 150px;
+    }
+}
 
