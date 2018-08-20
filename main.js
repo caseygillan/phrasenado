@@ -192,7 +192,7 @@ function increaseTotalScore() {
 function gameOn() {
     phrase.style.display = '';
     letterInterval = setInterval(changeLetters, 100);
-    countdownInterval = setInterval(scoreCountdown, 20);
+    countdownInterval = setInterval(scoreCountdown, 30);
     tornadoInterval = setInterval(tornado, 1);
 }
 
